@@ -25,11 +25,7 @@ public struct RRule {
     }()
 
     public static func ruleFromString(_ string: String) -> RecurrenceRule? {
-        let string = string.trimmingCharacters(in: .whitespaces)
-        guard let range = string.range(of: "RRULE:"), range.lowerBound == string.startIndex else {
-            return nil
-        }
-        let ruleString = string.substring(from: range.upperBound)
+        let ruleString = string.trimmingCharacters(in: .whitespaces)
         let rules = ruleString.components(separatedBy: ";").flatMap { (rule) -> String? in
             if (rule.isEmpty || rule.characters.count == 0) {
                 return nil
@@ -161,6 +157,10 @@ public struct RRule {
                 })
                 recurrenceRule.bysecond = bysecond.sorted(by: <)
             }
+
+            if ruleName == "EXDATE" {
+                recurrenceRule.exdate = ExclusionDate(exdateString: ruleValue, granularity: .day)
+            }
         }
 
         guard let frequency = ruleFrequency else {
@@ -173,7 +173,7 @@ public struct RRule {
     }
 
     public static func stringFromRule(_ rule: RecurrenceRule) -> String {
-        var rruleString = "RRULE:"
+        var rruleString = ""
 
         rruleString += "FREQ=\(rule.frequency.toString());"
 
@@ -266,6 +266,10 @@ public struct RRule {
         })
         if bysecondStrings.count > 0 {
             rruleString += "BYSECOND=\(bysecondStrings.joined(separator: ","));"
+        }
+
+        if let exDate = rule.exdate?.toExDateString(), !exDate.isEmpty {
+          rruleString += "EXDATE=\(exDate);"
         }
 
         if rruleString.substring(from: rruleString.characters.index(rruleString.endIndex, offsetBy: -1)) == ";" {

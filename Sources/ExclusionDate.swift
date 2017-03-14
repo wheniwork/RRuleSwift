@@ -20,11 +20,7 @@ public struct ExclusionDate {
     }
 
     public init?(exdateString string: String, granularity component: Calendar.Component) {
-        let string = string.trimmingCharacters(in: .whitespaces)
-        guard let range = string.range(of: "EXDATE:"), range.lowerBound == string.startIndex else {
-            return nil
-        }
-        let exdateString = string.substring(from: range.upperBound)
+        let exdateString = string.trimmingCharacters(in: .whitespaces)
         let exdates = exdateString.components(separatedBy: ",").flatMap { (dateString) -> String? in
             if (dateString.isEmpty || dateString.characters.count == 0) {
                 return nil
@@ -39,7 +35,7 @@ public struct ExclusionDate {
     }
 
     public func toExDateString() -> String {
-        var exdateString = "EXDATE:"
+        var exdateString = ""
         let dateStrings = dates.map { (date) -> String in
             return RRule.dateFormatter.string(from: date)
         }
