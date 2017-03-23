@@ -72,7 +72,9 @@
 				EB48D1311D641ABB001EE872 /* Sources */,
 				D31B13981CA8E02E00D0B863 /* Products */,
 			);
+			indentWidth = 4;
 			sourceTree = "<group>";
+			tabWidth = 4;
 		};
 		D31B13981CA8E02E00D0B863 /* Products */ = {
 			isa = PBXGroup;

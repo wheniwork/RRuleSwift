@@ -178,11 +178,18 @@ public struct RRule {
         rruleString += "FREQ=\(rule.frequency.toString());"
 
         let interval = max(1, rule.interval)
-        rruleString += "INTERVAL=\(interval);"
+        if interval != 1 {
+            rruleString += "INTERVAL=\(interval);"
+        }
 
-        rruleString += "WKST=\(rule.firstDayOfWeek.toSymbol());"
+        if rule.firstDayOfWeek != .monday {
+            rruleString += "WKST=\(rule.firstDayOfWeek.toSymbol());"
+        }
 
-        rruleString += "DTSTART=\(dateFormatter.string(from: rule.startDate as Date));"
+        if let startDate = rule.startDate
+        {
+          rruleString += "DTSTART=\(dateFormatter.string(from: startDate as Date));"
+        }
 
         if let endDate = rule.recurrenceEnd?.endDate {
             rruleString += "UNTIL=\(dateFormatter.string(from: endDate));"
