@@ -82,8 +82,8 @@ class RRuleExampleViewController: UIViewController {
             return dateFormatter
         }()
 
-        var rule = RecurrenceRule(rruleString: "RRULE:FREQ=WEEKLY;DTSTART=20151119T014500Z;INTERVAL=1;BYDAY=MO,TU,WE,TH,FR;UNTIL=20170101T014500Z")!
-        rule.exdate = ExclusionDate(exdateString: "EXDATE:20151120T014500Z,20151123T014500Z,20151126T014500Z,20151127T014500Z,20151130T014500Z,20151201T014500Z,20151202T014500Z,20151203T014500Z,20151207T014500Z,20151210T014500Z,20151211T014500Z,20151215T014500Z,20151216T014500Z,20151217T014500Z,20151221T014500Z,20151222T014500Z,20151223T014500Z,20151228T014500Z,20151229T014500Z", granularity: .day)
+        var rule = RecurrenceRule(rruleString: "FREQ=WEEKLY;DTSTART=20151119T014500Z;INTERVAL=1;BYDAY=MO,TU,WE,TH,FR;UNTIL=20170101T014500Z")!
+        rule.exdate = ExclusionDate(exdateString: "20151120T014500Z,20151123T014500Z,20151126T014500Z,20151127T014500Z,20151130T014500Z,20151201T014500Z,20151202T014500Z,20151203T014500Z,20151207T014500Z,20151210T014500Z,20151211T014500Z,20151215T014500Z,20151216T014500Z,20151217T014500Z,20151221T014500Z,20151222T014500Z,20151223T014500Z,20151228T014500Z,20151229T014500Z", granularity: .day)
         let date =  dateFormatter.date(from: "2015-11-01 00:00:00 Sun")!
         let otherDate =  dateFormatter.date(from: "2016-02-01 00:00:00 Sun")!
 
@@ -173,7 +173,7 @@ extension RRuleExampleViewController: UITableViewDataSource, UITableViewDelegate
             return cell
         case (3, _):
             let cell = tableView.dequeueReusableCell(withIdentifier: kDatePickerCellID, for: indexPath) as! DatePickerCell
-            cell.datePicker.date = rule.startDate
+            cell.datePicker.date = rule.startDate ?? Date()
             cell.datePicker.addTarget(self, action: #selector(startDateDidChange(_:)), for: .valueChanged)
             return cell
         case (4, _):
