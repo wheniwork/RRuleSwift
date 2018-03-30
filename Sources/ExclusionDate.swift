@@ -29,21 +29,28 @@ public struct ExclusionDate {
         }
 
         self.dates = exdates.flatMap({ (dateString) -> Date? in
-            return RRule.dateFormatter.date(from: dateString)
+            if let date = RRule.dateFormatter.date(from: dateString) {
+                return date
+            } else if let date = RRule.realDate(dateString) {
+                return date
+            }
+            return nil
         })
         self.component = component
     }
 
-    public func toExDateString() -> String {
+    public func toExDateString() -> String? {
         var exdateString = ""
         let dateStrings = dates.map { (date) -> String in
             return RRule.dateFormatter.string(from: date)
         }
         if dateStrings.count > 0 {
             exdateString += dateStrings.joined(separator: ",")
+        } else {
+            return nil
         }
 
-        if exdateString.substring(from: exdateString.characters.index(exdateString.endIndex, offsetBy: -1)) == "," {
+        if String(exdateString.suffix(from: exdateString.characters.index(exdateString.endIndex, offsetBy: -1))) == "," {
             exdateString.remove(at: exdateString.characters.index(exdateString.endIndex, offsetBy: -1))
         }
 
