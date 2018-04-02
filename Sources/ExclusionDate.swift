@@ -22,7 +22,7 @@ public struct ExclusionDate {
     public init?(exdateString string: String, granularity component: Calendar.Component) {
         let exdateString = string.trimmingCharacters(in: .whitespaces)
         let exdates = exdateString.components(separatedBy: ",").flatMap { (dateString) -> String? in
-            if (dateString.isEmpty || dateString.characters.count == 0) {
+            if (dateString.isEmpty || dateString.count == 0) {
                 return nil
             }
             return dateString
@@ -50,8 +50,8 @@ public struct ExclusionDate {
             return nil
         }
 
-        if String(exdateString.suffix(from: exdateString.characters.index(exdateString.endIndex, offsetBy: -1))) == "," {
-            exdateString.remove(at: exdateString.characters.index(exdateString.endIndex, offsetBy: -1))
+        if String(exdateString.suffix(from: exdateString.index(exdateString.endIndex, offsetBy: -1))) == "," {
+            exdateString.remove(at: exdateString.index(exdateString.endIndex, offsetBy: -1))
         }
 
         return exdateString
