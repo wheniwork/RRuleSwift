@@ -50,10 +50,6 @@ public struct ExclusionDate {
             return nil
         }
 
-        if String(exdateString.suffix(from: exdateString.index(exdateString.endIndex, offsetBy: -1))) == "," {
-            exdateString.remove(at: exdateString.index(exdateString.endIndex, offsetBy: -1))
-        }
-
         return exdateString
     }
 }
