@@ -21,14 +21,14 @@ public struct ExclusionDate {
 
     public init?(exdateString string: String, granularity component: Calendar.Component) {
         let exdateString = string.trimmingCharacters(in: .whitespaces)
-        let exdates = exdateString.components(separatedBy: ",").flatMap { (dateString) -> String? in
-            if (dateString.isEmpty || dateString.count == 0) {
+        let exdates = exdateString.components(separatedBy: ",").compactMap { (dateString) -> String? in
+            if dateString.isEmpty {
                 return nil
             }
             return dateString
         }
 
-        self.dates = exdates.flatMap({ (dateString) -> Date? in
+        self.dates = exdates.compactMap({ (dateString) -> Date? in
             if let date = RRule.dateFormatter.date(from: dateString) {
                 return date
             } else if let date = RRule.realDate(dateString) {

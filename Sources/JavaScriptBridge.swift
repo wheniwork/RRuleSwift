@@ -69,7 +69,7 @@ internal extension RecurrenceRule {
             jsonString += "count: \(endlessRecurrenceCount),"
         }
 
-        let bysetposStrings = bysetpos.flatMap({ (setpo) -> String? in
+        let bysetposStrings = bysetpos.compactMap({ (setpo) -> String? in
             guard (-366...366 ~= setpo) && (setpo != 0) else {
                 return nil
             }
@@ -79,7 +79,7 @@ internal extension RecurrenceRule {
             jsonString += "bysetpos: [\(bysetposStrings.joined(separator: ","))],"
         }
 
-        let byyeardayStrings = byyearday.flatMap({ (yearday) -> String? in
+        let byyeardayStrings = byyearday.compactMap({ (yearday) -> String? in
             guard (-366...366 ~= yearday) && (yearday != 0) else {
                 return nil
             }
@@ -89,7 +89,7 @@ internal extension RecurrenceRule {
             jsonString += "byyearday: [\(byyeardayStrings.joined(separator: ","))],"
         }
 
-        let bymonthStrings = bymonth.flatMap({ (month) -> String? in
+        let bymonthStrings = bymonth.compactMap({ (month) -> String? in
             guard 1...12 ~= month else {
                 return nil
             }
@@ -99,7 +99,7 @@ internal extension RecurrenceRule {
             jsonString += "bymonth: [\(bymonthStrings.joined(separator: ","))],"
         }
 
-        let byweeknoStrings = byweekno.flatMap({ (weekno) -> String? in
+        let byweeknoStrings = byweekno.compactMap({ (weekno) -> String? in
             guard (-53...53 ~= weekno) && (weekno != 0) else {
                 return nil
             }
@@ -109,7 +109,7 @@ internal extension RecurrenceRule {
             jsonString += "byweekno: [\(byweeknoStrings.joined(separator: ","))],"
         }
 
-        let bymonthdayStrings = bymonthday.flatMap({ (monthday) -> String? in
+        let bymonthdayStrings = bymonthday.compactMap({ (monthday) -> String? in
             guard (-31...31 ~= monthday) && (monthday != 0) else {
                 return nil
             }
