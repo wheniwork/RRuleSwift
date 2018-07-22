@@ -6,6 +6,7 @@ ios-framework:
 	xcodebuild -project RRuleSwift.xcodeproj -target RRuleSwift-iOS -sdk iphonesimulator | xcpretty
 
 	lipo build/Release-iphonesimulator/RRuleSwift.framework/RRuleSwift build/Release-iphoneos/RRuleSwift.framework/RRuleSwift -create -output build/Release-iphoneos/RRuleSwift.framework/RRuleSwift
+	lipo build/Release-iphonesimulator/RRuleSwift.framework.dSYM/Contents/Resources/DWARF/RRuleSwift build/Release-iphoneos/RRuleSwift.framework.dSYM/Contents/Resources/DWARF/RRuleSwift -create -output build/Release-iphoneos/RRuleSwift.framework.dSYM/Contents/Resources/DWARF/RRuleSwift
 
 	mv build/Release-iphonesimulator/RRuleSwift.framework/Modules/RRuleSwift.swiftmodule/i386.swiftdoc build/Release-iphoneos/RRuleSwift.framework/Modules/RRuleSwift.swiftmodule/ 
 	mv build/Release-iphonesimulator/RRuleSwift.framework/Modules/RRuleSwift.swiftmodule/i386.swiftmodule build/Release-iphoneos/RRuleSwift.framework/Modules/RRuleSwift.swiftmodule/ 
@@ -16,5 +17,6 @@ ios-framework:
 	mkdir products/ios
 
 	mv build/Release-iphoneos/RRuleSwift.framework products/ios/RRuleSwift.framework
+	mv build/Release-iphoneos/RRuleSwift.framework.dSYM products/ios/RRuleSwift.framework.dSYM
 
 	rm -r build
