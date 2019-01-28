@@ -191,7 +191,7 @@
 				TargetAttributes = {
 					D31B13961CA8E02E00D0B863 = {
 						CreatedOnToolsVersion = 7.3;
-						LastSwiftMigration = 0900;
+						LastSwiftMigration = 1020;
 					};
 					EB48D1361D641AD6001EE872 = {
 						CreatedOnToolsVersion = 7.3;
@@ -398,8 +398,7 @@
 				PRODUCT_NAME = RRuleSwift;
 				SKIP_INSTALL = YES;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Debug;
 		};
@@ -418,8 +417,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = "Teambition.RRuleSwift-iOS";
 				PRODUCT_NAME = RRuleSwift;
 				SKIP_INSTALL = YES;
-				SWIFT_SWIFT3_OBJC_INFERENCE = Default;
-				SWIFT_VERSION = 4.2;
+				SWIFT_VERSION = 5.0;
 			};
 			name = Release;
 		};
