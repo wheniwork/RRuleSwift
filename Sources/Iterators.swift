@@ -25,7 +25,7 @@ public struct Iterator {
 }
 
 public extension RecurrenceRule {
-    public func allOccurrences(endless endlessRecurrenceCount: Int = Iterator.endlessRecurrenceCount) -> [Date] {
+    func allOccurrences(endless endlessRecurrenceCount: Int = Iterator.endlessRecurrenceCount) -> [Date] {
         guard let _ = JavaScriptBridge.rrulejs() else {
             return []
         }
@@ -56,7 +56,7 @@ public extension RecurrenceRule {
         return occurrences.sorted { $0.isBeforeOrSame(with: $1) }
     }
 
-    public func occurrences(between date: Date, and otherDate: Date, endless endlessRecurrenceCount: Int = Iterator.endlessRecurrenceCount) -> [Date] {
+    func occurrences(between date: Date, and otherDate: Date, endless endlessRecurrenceCount: Int = Iterator.endlessRecurrenceCount) -> [Date] {
         guard let _ = JavaScriptBridge.rrulejs() else {
             return []
         }
