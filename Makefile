@@ -8,10 +8,7 @@ ios-framework:
 	lipo build/Release-iphonesimulator/RRuleSwift.framework/RRuleSwift build/Release-iphoneos/RRuleSwift.framework/RRuleSwift -create -output build/Release-iphoneos/RRuleSwift.framework/RRuleSwift
 	lipo build/Release-iphonesimulator/RRuleSwift.framework.dSYM/Contents/Resources/DWARF/RRuleSwift build/Release-iphoneos/RRuleSwift.framework.dSYM/Contents/Resources/DWARF/RRuleSwift -create -output build/Release-iphoneos/RRuleSwift.framework.dSYM/Contents/Resources/DWARF/RRuleSwift
 
-	mv build/Release-iphonesimulator/RRuleSwift.framework/Modules/RRuleSwift.swiftmodule/i386.swiftdoc build/Release-iphoneos/RRuleSwift.framework/Modules/RRuleSwift.swiftmodule/ 
-	mv build/Release-iphonesimulator/RRuleSwift.framework/Modules/RRuleSwift.swiftmodule/i386.swiftmodule build/Release-iphoneos/RRuleSwift.framework/Modules/RRuleSwift.swiftmodule/ 
-	mv build/Release-iphonesimulator/RRuleSwift.framework/Modules/RRuleSwift.swiftmodule/x86_64.swiftdoc build/Release-iphoneos/RRuleSwift.framework/Modules/RRuleSwift.swiftmodule/ 
-	mv build/Release-iphonesimulator/RRuleSwift.framework/Modules/RRuleSwift.swiftmodule/x86_64.swiftmodule build/Release-iphoneos/RRuleSwift.framework/Modules/RRuleSwift.swiftmodule/ 
+	cp -r build/Release-iphonesimulator/RRuleSwift.framework/Modules/RRuleSwift.swiftmodule/ build/Release-iphoneos/RRuleSwift.framework/Modules/RRuleSwift.swiftmodule
 
 	mkdir products
 	mkdir products/ios
