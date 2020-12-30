@@ -15,6 +15,7 @@ let package = Package(
         .target(
             name: "RRuleSwift-iOS",
             dependencies: [],
+            path: "Sources",
             resources: [
                 .process("lib/nlp.js"),
                 .process("lib/rrule.js")
