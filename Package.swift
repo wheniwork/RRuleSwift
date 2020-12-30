@@ -16,6 +16,10 @@ let package = Package(
             name: "RRuleSwift",
             dependencies: [],
             path: "Sources",
+            exclude: [
+                "Supporting Files/Info-iOS.plist",
+                "Supporting Files/Info-watchOS.plist"
+            ],
             resources: [
                 .process("lib/nlp.js"),
                 .process("lib/rrule.js")
