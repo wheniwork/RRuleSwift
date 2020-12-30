@@ -8,12 +8,12 @@ let package = Package(
     products: [
         .library(
             name: "RRuleSwift",
-            targets: ["RRuleSwift-iOS"])
+            targets: ["RRuleSwift"])
     ],
     dependencies: [],
     targets: [
         .target(
-            name: "RRuleSwift-iOS",
+            name: "RRuleSwift",
             dependencies: [],
             path: "Sources",
             resources: [
