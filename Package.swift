@@ -17,7 +17,7 @@ let package = Package(
             dependencies: [],
             path: "Sources",
             exclude: [
-                "JavaScriptBridge",
+                "JavaScriptBridge.swift",
                 "Supporting Files/Info-iOS.plist",
                 "Supporting Files/Info-watchOS.plist"
             ],
