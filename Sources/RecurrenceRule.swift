@@ -87,7 +87,7 @@ public struct RecurrenceRule {
         }
     }
 
-    public func toRRuleString() -> String {
-        return RRule.stringFromRule(self)
+    public func toRRuleString(usePrefix: Bool = false) -> String {
+        return RRule.stringFromRule(self, usePrefix: usePrefix)
     }
 }

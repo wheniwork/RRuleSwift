@@ -31,7 +31,15 @@ public struct RRule {
     }()
 
     public static func ruleFromString(_ string: String) -> RecurrenceRule? {
-        let ruleString = string.trimmingCharacters(in: .whitespaces)
+        let string = string.trimmingCharacters(in: .whitespaces)
+        let ruleString: String
+        if let range = string.range(of: "RRULE:"), range.lowerBound == string.startIndex
+        {
+          ruleString = String(string.suffix(from: range.upperBound))
+        }
+        else {
+          ruleString = string
+        }
         let rules = ruleString.components(separatedBy: ";").compactMap { (rule) -> String? in
             if rule.isEmpty {
                 return nil
@@ -182,8 +190,12 @@ public struct RRule {
         return recurrenceRule
     }
 
-    public static func stringFromRule(_ rule: RecurrenceRule) -> String {
+    public static func stringFromRule(_ rule: RecurrenceRule, usePrefix: Bool = false) -> String {
         var rruleString = ""
+
+        if usePrefix {
+            rruleString += "RRULE:"
+        }
 
         rruleString += "FREQ=\(rule.frequency.toString());"
 
